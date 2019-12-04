@@ -1,13 +1,30 @@
 class NegociacaoController {
 
+  constructor() {
+
+    let $ = document.querySelector.bind(document);
+    this._inputData = $("#data");
+    this._inputQuantidade = $("#quantidade");
+    this._inputValor = $("#valor");
+
+  }
+
   adiciona(event) {
     event.preventDefault();
 
-    alert(json);
+    let novaNegociacao = this.criaNegociacao();
+  }
+
+  criaNegociacao() {
+    // Criando um objeto Date
+    let data = new Date(this._inputData.value.split("-"));
+
+    let negociacao = new Negociacao(
+      data,
+      this._inputQuantidade.value,
+      this._inputValor.value
+    );
+
+    return negociacao;
   }
 }
-
-// '12-10-2016' -> new Date(2016, 10, 12);
-//
-// var sData = '12-10-2016'.split('-');
-// var data = new Date(sData[2])
